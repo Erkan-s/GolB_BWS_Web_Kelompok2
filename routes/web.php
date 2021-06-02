@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\ArticleController;
+use App\Http\Controller\AuthorsController;
+use App\Http\Controller\CategoryController;
+use App\Http\Controller\ContentController;
+use App\Http\Controller\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +23,32 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('index');
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function (){
+        // Route artikel
+        Route::resource('article', Backend\ArticleController::class, ['names' => [
+            'index' => 'article'
+        ]]);
+        // Route author
+        Route::resource('authors', Backend\AuthorsController::class, ['names' => [
+            'index' => 'authors'
+        ]]);
+        // Route Category
+        Route::resource('category', Backend\CategoryController::class, ['names' => [
+            'index' => 'category'
+        ]]);    
+        // Route Content
+        Route::resource('content', Backend\ContentController::class, ['names' => [
+            'index' => 'content'
+        ]]);
+        Route::resource('type', Backend\TypeController::class, ['names' => [
+            'index' => 'type'
+        ]]);
+    });
+});
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::prefix('admin')->group(function )
