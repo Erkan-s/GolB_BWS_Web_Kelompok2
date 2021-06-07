@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Authors;
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
@@ -12,9 +13,18 @@ class AuthorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $param;
+
+    public function __construct()
+    {
+        $this->param['title'] = null;
+    }
     public function index()
     {
-        //
+        $this->param['linkBaru'] = null;
+        $this->param['subtitleBaru'] = null;
+        $this->param['data'] = Authors::all();
+        return view('backend.authors.index', $this->param);
     }
 
     /**
@@ -24,7 +34,12 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        $this->param['title'] = "Tambah Data";
+        $this->param['linkBaru'] = 'authors';
+        $this->param['subtitleBaru'] = 'Narator';
+
+        $this->param['data'] = Authors::all();
+        return view('backend.authors.create',$this->param);
     }
 
     /**
@@ -35,7 +50,31 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->param['linkBaru'] = null;
+        $this->param['subtitleBaru'] = null;
+
+       $request->validate([
+           'name' => 'required',
+           'jobs' => 'max:100',
+           'gender' => 'required'
+       ],
+       [
+           'required' => 'Data harus terisi',
+           'jobs.max' => 'Data tidak boleh lebih dari 100 karakter.'
+       ],
+       [
+           'name' => 'Nama Narator',
+           'jobs' => 'Pekerjaan',
+           'gender' => 'Jenis Kelamin'
+       ]);
+
+           $newAuthor = new Authors;
+           $newAuthor->name_author = $request->name;
+           $newAuthor->gender = $request->gender;
+           $newAuthor->jobs = $request->jobs;
+           $newAuthor->save();
+           alert()->success('Berhasil menambahkan data Narator','Sukses')->autoclose(3000);
+           return redirect('dashboard/admin/authors');
     }
 
     /**
@@ -46,7 +85,7 @@ class AuthorsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -57,7 +96,10 @@ class AuthorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->param['title'] = "Edit Data";
+        $this->param['linkBaru'] = 'authors';
+        $this->param['subtitleBaru'] = 'Narator';
+        return view('backend.authors.create',$this->param);
     }
 
     /**

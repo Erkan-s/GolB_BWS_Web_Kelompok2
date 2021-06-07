@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    Route::prefix('admin')->group(function (){
+    Route::prefix('dashboard/admin')->group(function (){
         // Route artikel
         Route::resource('article', Backend\ArticleController::class, ['names' => [
             'index' => 'article'
@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
         // Route Category
         Route::resource('category', Backend\CategoryController::class, ['names' => [
             'index' => 'category'
-        ]]);    
+        ]]);
         // Route Content
         Route::resource('content', Backend\ContentController::class, ['names' => [
             'index' => 'content'

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAuthorsTable extends Migration
+class AddJobsToAuthors extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateAuthorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name_author',100);
-            $table->enum('gender', ['l', 'p']);
-            $table->timestamps();
+        Schema::table('authors', function (Blueprint $table) {
+            $table->string('jobs')->nullable()->after('gender');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateAuthorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authors');
+        Schema::table('authors', function (Blueprint $table) {
+            $table->dropColumn('jobs');
+        });
     }
 }

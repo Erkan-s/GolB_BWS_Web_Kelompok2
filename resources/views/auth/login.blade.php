@@ -49,18 +49,15 @@
         border: none;
     }
     button[type=submit]:hover{
-        background-color: rgb(2, 97, 97);
-        padding: 10px 45px;
+        background-color: #6ca78d;
         border: none;
     }
     button[type=submit]:active{
-        background-color: rgb(2, 97, 97);
-        padding: 10px 45px;
+        background-color: #6ca78d;
         border: none;
     }
     button[type=submit]:focus{
-        background-color: #97d2b7;
-        padding: 10px 45px;
+        background-color: #6ca78d;
         border: none;
     }
     .text-login{

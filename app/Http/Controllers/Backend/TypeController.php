@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controller\AuthorController;
 
 class TypeController extends Controller
 {
@@ -24,7 +25,6 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
