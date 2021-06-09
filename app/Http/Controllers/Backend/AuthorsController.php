@@ -53,13 +53,18 @@ class AuthorsController extends Controller
         $this->param['subtitleBaru'] = null;
 
        $request->validate([
+<<<<<<< Updated upstream
            'name' => 'required|string',
            'jobs' => 'max:100',
+=======
+           'name' => 'required',
+           'jobs' => 'max:30',
+>>>>>>> Stashed changes
            'gender' => 'required'
        ],
        [
            'required' => 'Data harus terisi',
-           'jobs.max' => 'Data tidak boleh lebih dari 100 karakter.'
+           'jobs.max' => 'Data tidak boleh lebih dari 30 karakter.'
        ],
        [
            'name' => 'Nama Narator',
