@@ -24,6 +24,7 @@
 <script src=" {{ asset('backend/assets/js/init/fullcalendar-init.js') }}"></script>
 
 {{-- dataTables --}}
+
 <script src="{{ asset('backend/assets/js/lib/data-table/datatables.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/lib/data-table/dataTables.buttons.min.js') }}"></script>
@@ -80,3 +81,4 @@ function deleteData(id) {
         });
 }
 </script>
+

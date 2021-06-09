@@ -19,7 +19,6 @@ class CreateContentTable extends Migration
             $table->integer('authors_id')->unsigned();
             $table->string('title', 50);
             $table->string('cover', 100)->nullable();
-            $table->enum('gender', ['l', 'p']);
             $table->text('desc');
             $table->string('file',100)->nullable();
             $table->string('duration',100);
