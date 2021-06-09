@@ -42,10 +42,41 @@
 
 
     });
-    var val = document.getElementById('name').value;
-    if (/^\s*$/.test(val)) {
-        console.log('tidak ada nilai');
-    } else {
-        console.log('ada nilai');
-    }
+    // var val = document.getElementById('name').value;
+    // if (/^\s*$/.test(val)) {
+    //     console.log('tidak ada nilai');
+    // } else {
+    //     console.log('ada nilai');
+    // }
+
+    // var $nama = $("#name");
+    // console.log($nama);
+
+    $(document).ready(function(){
+        $('#name').click(function(){
+            var nama = $("#name").val();
+            if (nama == '') {
+                alert('data kosong');
+            } else {
+               console.log(nama);
+            }
+        })
+    })
+
+// Hapus data
+function deleteData(id) {
+    swal({
+        title: "Apakah anda yakin menghapus data ",
+        text: "Anda tidak dapat mengembalikan data tersebut !",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $('#delete-'+id).submit();
+            } else {
+            }
+        });
+}
 </script>

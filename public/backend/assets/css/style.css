@@ -2529,13 +2529,29 @@ footer.site-footer {
   background-color: #6ca78d;
   border: none;
 }
-
 /* text required */
 .text-required {
   color: #219ebc;
   font-weight: 700;
 }
-
+/* .breadcrumb */
 .page-title h1{
     font-weight: 700;
+}
+/* button edit dan hapus */
+.button-group{
+    background-color: #efefef;
+    border-radius: 5px;
+    color: #6c757d;
+}
+.button-group .button-edit:hover{
+    color: #fca311 !important;
+}
+.button-group .button-hapus:hover{
+    color: #e63946 !important;
+}
+
+/* form input */
+input[type=text]{
+    font-size: 16px;
 }

@@ -9,9 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <!-- font awesome -->
-    <link rel="stylesheet" 
-      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" 
-      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" 
+    <link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
       crossorigin="anonymous">
 
     {{-- icon --}}
@@ -73,8 +73,8 @@
     /* img{
         max-width: 100%;
     } */
-    
-    .img-box{margin: auto;} 
+
+    .img-box{margin: auto;}
     @media screen and (max-width: 767px) {
         .img-box{
             padding-top: 0px;}
@@ -106,7 +106,7 @@
                                     <!-- Username -->
                                     <label for="" class="mb-2">Username</label>
                                     <input type="text" class="form-control" name="username" id="username" value="{{ old('username') }}" required autofocus>
-                               
+
                                 </div>
                                 <div>
                                     <!-- password -->
@@ -120,6 +120,7 @@
                                     <p><input type="checkbox" name="remember" id="remember_me">{{ __(' Remember me')}} </p>
                                 </div>
                                 <div class="d-flex justify-content-end">
+                                    <button type="reset" class="btn btn-outline ">Masuk</button>
                                     <button type="submit" class="btn btn-primary ">Masuk</button>
                                 </div>
                             </form>
@@ -134,8 +135,8 @@
         </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>

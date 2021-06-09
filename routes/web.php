@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('type', Backend\TypeController::class, ['names' => [
             'index' => 'type'
         ]]);
+
     });
 });
 
