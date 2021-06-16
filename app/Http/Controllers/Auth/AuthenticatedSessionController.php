@@ -32,6 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        alert()->success('Berhasil Login','Sukses')->autoclose(3000);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

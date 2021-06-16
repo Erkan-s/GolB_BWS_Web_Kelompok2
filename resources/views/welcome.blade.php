@@ -21,6 +21,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('landingpage/assets/img/favicons/logo2-web.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('landingpage/assets/img/favicons/logo2-web.png') }}">
     <link rel="manifest" href="{{ asset('landingpage/assets/img/favicons/manifest.json') }}">
+    {{-- animation --}}
+    <link rel="stylesheet" href=" {{ asset('landingpage/assets/css/animations.css') }} ">
     <meta name="msapplication-TileImage" content="{{ asset('landingpage/assets/img/favicons/logo2-web.png') }}">
     <meta name="theme-color" content="#ffffff">
 
@@ -64,8 +66,8 @@
 
         <div class="container position-relative">
           <div class="row align-items-center py-8">
-            <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid" src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile.png') }}" width="350" alt="" /></div>
-            <div class="col-md-7 col-lg-6 text-center text-md-start"><span class="badge bg-light rounded-pill text-dark align-items-center d-flex flex-row-reverse justify-content-end mx-auto mx-md-0 ps-0 w-75 w-sm-50 w-md-75 w-xl-50 mb-3"># 200 Pengguna User Android<img class="img-fluid float-start me-3" src="{{ asset('landingpage/assets/img/illustrations/jumlah-user.png') }}" alt=""/></span>
+            <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid slideUp" style="visibility: hidden"  src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile.png') }}" width="350" alt="" /></div>
+            <div class="col-md-7 col-lg-6 text-center text-md-start slideRight"><span class="badge bg-light rounded-pill text-dark align-items-center d-flex flex-row-reverse justify-content-end mx-auto mx-md-0 ps-0 w-75 w-sm-50 w-md-75 w-xl-50 mb-3"># 200 Pengguna User Android<img class="img-fluid float-start me-3" src="{{ asset('landingpage/assets/img/illustrations/jumlah-user.png') }}" alt=""/></span>
               <h1 class="mb-4 display-3 fw-bold lh-sm">Best app for your <br class="d-block d-lg-none d-xl-block" />Healthy</h1>
               <p class="mt-3 mb-4 fs-1">Jaga Kesehatan mu dengan aplikasi Be Healthy. Download For Free <br class="d-none d-lg-block" />Selalu menjaga kebugaran jasmani anda.</p><a class="btn btn-lg btn-primary rounded-pill hover-top" href="#" role="button">Download Gratis</a>
             </div>
@@ -77,7 +79,7 @@
       <section class="py-5" id="features">
         <div class="container-lg">
           <div class="row align-items-center">
-            <div class="col-md-5 col-lg-6 order-md-0 text-center text-md-start"><img class="img-fluid" src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile2.png') }}" width="550" alt="" /></div>
+            <div class="col-md-5 col-lg-6 order-md-0 text-center text-md-start"><img class="img-fluid" id="gambar-mobile" style="visibility: hidden" src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile2.png') }}" width="550" alt="" /></div>
             <div class="col-md-7 col-lg-6 px-sm-5 px-md-0">
               <h6 class="fw-bold fs-4 display-3 lh-sm">Fitur Aplikasi yang <br/> Luar Biasa</h6>
               <p class="my-4">Increase productivity with a simple to-do app. app for <br class="d-none d-xl-block" />managing your personal budgets.</p>
@@ -304,6 +306,7 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="{{ asset('landingpage/vendors/@popperjs/popper.min.js') }}"></script>
     <script src="{{ asset('landingpage/vendors/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('landingpage/vendors/is/is.min.js') }}"></script>
@@ -311,6 +314,18 @@
     <script src="{{ asset('landingpage/assets/js/theme.js') }}"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap" rel="stylesheet">
-  </body>
+    <script>
+		$(window).scroll(function() {
+			$('#gambar-mobile').each(function(){
+			var imagePos = $(this).offset().top;
+
+			var topOfWindow = $(window).scrollTop();
+				if (imagePos < topOfWindow+400) {
+					$(this).addClass("slideUp");
+				}
+			});
+		});
+    </script>
+</body>
 
 </html>

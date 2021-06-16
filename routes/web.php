@@ -27,31 +27,35 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+    // Route::name('dashboard.')->group(function( {
     Route::prefix('dashboard/admin')->group(function (){
         // Route artikel
         Route::resource('article', Backend\ArticleController::class, ['names' => [
-            'index' => 'article'
-        ]]);
-        // Route author
-        Route::resource('authors', Backend\AuthorsController::class, ['names' => [
-            'index' => 'authors'
+        'index' => 'article'
+    ]]);
+    // Route author
+    Route::resource('authors', Backend\AuthorsController::class, ['names' => [
+        'index' => 'authors'
         ]]);
         // Route Category
         Route::resource('category', Backend\CategoryController::class, ['names' => [
             'index' => 'category'
-        ]]);
-        // Route Content
-        Route::resource('content', Backend\ContentController::class, ['names' => [
-            'index' => 'content'
+            ]]);
+    // Route Content
+    Route::resource('content', Backend\ContentController::class, ['names' => [
+        'index' => 'content'
         ]]);
         Route::resource('type', Backend\TypeController::class, ['names' => [
             'index' => 'type'
-        ]]);
+            ]]);
 
-    });
+            });
 });
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::prefix('admin')->group(function )
-// });
+    // Route tampilan menghitung data
+     Route::get('/dashboard', 'Backend\DashboardController@index')->name('dashboard');
+    // Route::middleware(['auth'])->group(function () {
+
+    //     Route::prefix('admin')->group(function )
+    // });
 require __DIR__.'/auth.php';

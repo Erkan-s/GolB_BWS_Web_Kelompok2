@@ -232,6 +232,7 @@ return [
         // sweet alert
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         // end sweet
+
     ],
 
 ];

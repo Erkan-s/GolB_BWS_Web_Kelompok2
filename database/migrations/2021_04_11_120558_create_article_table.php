@@ -16,7 +16,7 @@ class CreateArticleTable extends Migration
         Schema::create('article', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('authors_id')->unsigned();
-            $table->string('title', 50);
+            $table->string('title', 50)->unique();
             $table->string('cover', 200)->nullable();
             $table->text('desc');
             $table->timestamps();
@@ -25,7 +25,6 @@ class CreateArticleTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
      *
      * @return void
      */

@@ -16,7 +16,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text">$<span class="count">23569</span></div>
+                                    <div class="stat-text">$<span class="count">
+                                        {{ $article }}
+                                    </span></div>
                                     <div class="stat-heading">Artikel</div>
                                 </div>
                             </div>

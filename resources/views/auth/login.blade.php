@@ -15,7 +15,7 @@
       crossorigin="anonymous">
 
     {{-- icon --}}
-    <link rel="shortcut icon" href=" {{ asset('backend/images/logo.png') }} " type="image/x-icon">
+    <link rel="shortcut icon" href=" {{ asset('backend/images/logo2-web.png') }} " type="image/x-icon">
 
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -58,6 +58,24 @@
     }
     button[type=submit]:focus{
         background-color: #6ca78d;
+        border: none;
+    }
+    button[type=reset]{
+        /* background-color: #97d2b7; */
+        border: 1px solid grey !important;
+        padding: 10px 45px;
+        border: none;
+    }
+    button[type=reset]:hover{
+        background-color: grey;
+        border: none;
+    }
+    button[type=reset]:active{
+        background-color: grey;
+        border: none;
+    }
+    button[type=reset]:focus{
+        background-color: grey;
         border: none;
     }
     .text-login{
@@ -120,8 +138,12 @@
                                     <p><input type="checkbox" name="remember" id="remember_me">{{ __(' Remember me')}} </p>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button type="reset" class="btn btn-outline ">Masuk</button>
-                                    <button type="submit" class="btn btn-primary ">Masuk</button>
+                                    <div class="" style="margin-right: 5px">
+                                        <button type="submit" class="btn btn-primary ">Masuk</button>
+                                    </div>
+                                    <div class="" >
+                                        <button type="reset" class="btn btn-outline-secondary ">Batal</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

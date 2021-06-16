@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Authors;
+use Exception;
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
@@ -13,7 +14,7 @@ class AuthorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $param;
+    public $param;
 
     public function __construct()
     {
@@ -52,32 +53,40 @@ class AuthorsController extends Controller
         $this->param['linkBaru'] = null;
         $this->param['subtitleBaru'] = null;
 
-       $request->validate([
-           'name' => 'required|string',
-           'jobs' => 'max:100',
-           'gender' => 'required'
-       ],
-       [
-           'required' => 'Data harus terisi',
-           'jobs.max' => 'Data tidak boleh lebih dari 100 karakter.'
-       ],
-       [
-           'name' => 'Nama Narator',
-           'jobs' => 'Pekerjaan',
-           'gender' => 'Jenis Kelamin'
-       ]);
+      try {
+        $validateData = $request->validate([
+            'name' => 'required|string|min:2',
+            'jobs' => 'max:100',
+            'gender' => 'required'
+        ],
+        [
+            'required' => ':attribute harus terisi',
+            'jobs.max' => 'Data tidak boleh lebih dari 100 karakter.',
+            'string' => 'data tidak boleh angka',
+            'min' => ':attribute tidak boleh kurang dari 4 karakter.',
+        ],
+        [
+            'name' => 'Nama Narator',
+            'jobs' => 'Pekerjaan',
+            'gender' => 'Jenis Kelamin'
+        ]);
 
-           $newAuthor = new Authors;
-           $newAuthor->name_author = $request->name;
-           $newAuthor->gender = $request->gender;
-           if (isset($request->jobs)) {
-               $newAuthor->jobs = $request->jobs;
-            }else{
-               $newAuthor->jobs = null;
-           }
-           $newAuthor->save();
-           alert()->success('Berhasil menambahkan data Narator','Sukses')->autoclose(3000);
-           return redirect('dashboard/admin/authors');
+            $newAuthor = new Authors;
+            $newAuthor->name_author = $request->name;
+            $newAuthor->gender = $request->gender;
+            if (isset($request->jobs)) {
+                $newAuthor->jobs = $request->jobs;
+             }else{
+                $newAuthor->jobs = null;
+            }
+            $newAuthor->save();
+            alert()->success('Berhasil menambahkan data Narator','Sukses')->autoclose(3000);
+            return redirect('dashboard/admin/authors');
+      } catch (Exception $e) {
+            return $e;
+      }catch(\Illuminate\Database\QueryException $e){
+            return $e;
+      }
     }
 
     /**
