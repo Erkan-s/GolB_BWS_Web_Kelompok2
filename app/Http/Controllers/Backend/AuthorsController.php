@@ -53,7 +53,7 @@ class AuthorsController extends Controller
         $this->param['linkBaru'] = null;
         $this->param['subtitleBaru'] = null;
 
-<<<<<<< HEAD
+
       try {
         $validateData = $request->validate([
             'name' => 'required|string|min:2',
@@ -62,7 +62,7 @@ class AuthorsController extends Controller
         ],
         [
             'required' => ':attribute harus terisi',
-            'jobs.max' => 'Data tidak boleh lebih dari 100 karakter.',
+            'jobs.max' => ':attribute Data tidak boleh lebih dari 100 karakter.',
             'string' => 'data tidak boleh angka',
             'min' => ':attribute tidak boleh kurang dari 4 karakter.',
         ],
@@ -88,39 +88,11 @@ class AuthorsController extends Controller
       }catch(\Illuminate\Database\QueryException $e){
             return $e;
       }
-=======
-       $request->validate([
-<<<<<<< Updated upstream
-           'name' => 'required|string',
-           'jobs' => 'max:100',
-=======
-           'name' => 'required',
-           'jobs' => 'max:30',
->>>>>>> Stashed changes
-           'gender' => 'required'
-       ],
-       [
-           'required' => 'Data harus terisi',
-           'jobs.max' => 'Data tidak boleh lebih dari 30 karakter.'
-       ],
-       [
-           'name' => 'Nama Narator',
-           'jobs' => 'Pekerjaan',
-           'gender' => 'Jenis Kelamin'
-       ]);
 
-           $newAuthor = new Authors;
-           $newAuthor->name_author = $request->name;
-           $newAuthor->gender = $request->gender;
-           if (isset($request->jobs)) {
-               $newAuthor->jobs = $request->jobs;
-            }else{
-               $newAuthor->jobs = null;
-           }
-           $newAuthor->save();
-           alert()->success('Berhasil menambahkan data Narator','Sukses')->autoclose(3000);
-           return redirect('dashboard/admin/authors');
->>>>>>> 26ef2446d49f363462b58462057642d6f553e712
+        $newAuthor->save();
+        alert()->success('Berhasil menambahkan data Narator','Sukses')->autoclose(3000);
+        return redirect('dashboard/admin/authors');
+
     }
 
     /**
