@@ -52,10 +52,12 @@ Route::middleware(['auth'])->group(function () {
             });
 });
 
-    // Route tampilan menghitung data
-     Route::get('/dashboard', 'Backend\DashboardController@index')->name('dashboard');
-    // Route::middleware(['auth'])->group(function () {
+// Route tampilan menghitung data
+    Route::get('/dashboard', 'Backend\DashboardController@index')->name('dashboard');
+// Route::middleware(['auth'])->group(function () {
 
-    //     Route::prefix('admin')->group(function )
-    // });
+    Route::get('/','Backend\DashboardController@landingPage')->name('welcome');
+//
+//     Route::prefix('admin')->group(function )
+// });
 require __DIR__.'/auth.php';

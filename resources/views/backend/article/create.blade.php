@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body card-block">
-                        <form action=" {{ route('article.store') }} " class="p-4" method="POST" name="tambaData" enctype="multipart/form-data">
+                        <form action="{{ route('article.store') }}" class="p-4" method="POST" name="tambaData" enctype="multipart/form-data">
                         @csrf
                             <div class="row form-group">
                                 <div class="col-lg-8 mb-4">
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-lg-8">
                                     <label for="title">Judul <span class="text-required"> * </span></label>
-                                    <input type="text" name="title" id="title" value="" class="input-lg form-control-lg form-control @error('name') is-invalid @enderror"  aria-describedby="helpId" autofocus>
+                                    <input type="text" name="title" id="title" class="input-lg form-control-lg form-control @error('name') is-invalid @enderror"  aria-describedby="helpId" autofocus>
                                     <small id="helpId" class="text-muted" >Masukkan judul artikel dengan benar</small>
                                     {{-- @if ($errors->has('name'))
                                         <span class="badge badge-danger">{{  $errors->first('name') }}</span>
@@ -51,7 +51,7 @@
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary"><i class="ti-save pr-1"></i> Simpan </button>
                         <button type="reset" class="btn btn-outline-danger pr-4"><i class="fa fa-ban"></i> Batal </button>
-                        </form>
+                    </form>
                     </div>
                 </div>
             </div>

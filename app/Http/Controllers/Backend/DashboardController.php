@@ -16,4 +16,12 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('article','authors'));
     }
+
+    // Untuk tampilan landing page
+    public function landingPage()
+    {
+        $this->param['artikel'] = Article::all();
+
+        return view('welcome', $this->param);
+    }
 }

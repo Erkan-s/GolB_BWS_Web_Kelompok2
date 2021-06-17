@@ -146,7 +146,7 @@
                   <div class="col-md-6">
                     <div class="mb-4">
                       <div class="py-4"><img class="img-fluid" src="{{ asset('landingpage/assets/img/gallery/artikel-1.png') }}" width="450" alt="" /></div>
-                      <h5 class="fw-bold text-undefined">App Development</h5>
+                      <h5 class="fw-bold text-undefined"> </h5>
                       <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood tests.</p>
                       <div class="d-flex justify-content-end">
                         <a class="btn btn-lg btn-primary rounded-pill hover-top mt-4" href="#" role="button">Selengkapnya</a>

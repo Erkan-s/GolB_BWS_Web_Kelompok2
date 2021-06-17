@@ -44,22 +44,41 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'cove_artikel' => 'required|mimes:png,jpg,jpeg',
-            'title' => 'required|string',
-            'deskripsi' =>'required',
-        ],
-        [
-            'required' => 'Data harus terisi',
-            'mimes' => 'Ekstensi Harus png, jpg, jpeg',
+        // $request->validate([
+        //     'cove_artikel' => 'required|mimes:png,jpg,jpeg',
+        //     'title' => 'required|string',
+        //     'deskripsi' =>'required',
+        // ],
+        // [
+        //     'required' => 'Data harus terisi',
+        //     'mimes' => 'Ekstensi Harus png, jpg, jpeg',
 
-        ]);
+        // ]);
       try {
         $slug = Str::slug($request->title, "-");
         $addArticle = new Article();
         $addArticle->user_id = $request->userId;
         $addArticle->title = $request->title;
         $addArticle->slug = $slug;
+
+        // input cover artikel
+        $image = $request->file('cover_artikel');
+        $input['file'] = time().'.'.$image->getClientOriginalExtension();
+
+        $destinationPath = public_path('uploads/article/cover');
+
+        $imgFile = Image::make($image->getRealPath());
+
+        $imgFile->resize(200,200, function($constraint){
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$input['file']);
+
+        if (isset($input['file'])) {
+            $destinationPath = public_path('uploads/article/cover');
+            $image->move($destinationPath, $input['file']);
+            $addArticle->cover = $input['file'];
+        }
+        // end input artikel
 
         // input gambar deskripsi artikel
         $storage = 'uploads/article';
@@ -84,30 +103,12 @@ class ArticleController extends Controller
                 $img->removeAttribute('src');
                 $img->setAttribute('src',$new_src);
                 $img->setAttribute('class', 'img-responsive');
-                $addArticle->desc = $dom->saveHTML();
             }
         }
         // end input deskripsi artikel
-
-        // input cover artikel
-        $image = $request->file('cover_artikel');
-        $input['file'] = time().'.'.$image->getClientOriginalExtension();
-
-        $destinationPath = public_path('uploads/article/cover');
-
-        $imgFile = Image::make($image->getRealPath());
-
-        $imgFile->resize(200,200, function($constraint){
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$input['file']);
-
-        if (isset($input['file'])) {
-            $destinationPath = public_path('uploads/article/cover');
-            $image->move($destinationPath, $input['file']);
-            $addArticle->cover = $input['file'];
-            $addArticle->save();
-        }
-        // end input artikel
+        $deskripsi = $dom->saveHTML();
+        $addArticle->desc = $deskripsi;
+        $addArticle->save();
         alert()->success('Data berhasil ditambahkan','Sukses')->autoclose(3000);
         return redirect()->route('article');
 
@@ -115,7 +116,7 @@ class ArticleController extends Controller
             return $e;
         } catch (\Illuminate\Database\QueryException $e) {
             return $e;
-    }
+       }
 }
 
 
