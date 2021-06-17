@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Type;
+use Exception;
 
 class CategoryController extends Controller
 {
@@ -12,9 +15,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->param['title'] = 'Kategori';
+    }
     public function index()
     {
-        
+        $this->param['linkBaru'] = null;
+        $this->param['subtitleBaru'] = null;
+        $this->param['data'] = Category::all();
+        return view('backend.category.index', $this->param);
     }
 
     /**
@@ -57,7 +66,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->param['tit;e'] = 'Edit Data Kategori ';
+        $this->param['subtitleBaru'] = 'Kategori';
+        $this->param['linkBaru'] = 'category';
+        $this->param['type'] = Type::all();
+        $this->param['data'] = Category::findOrFail($id);
+
+        return view('backend.category.update', $this->param);
     }
 
     /**
@@ -69,7 +84,30 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kategori' => 'required|string',
+            'tipe' => 'required'
+        ],[
+            'required' => ':Attribute harus terisi',
+            'string' => ':Attribute tidak boleh angka'
+        ],[
+            'kategori' => 'Data Kategori',
+            'tipe' => 'Data Tipe'
+        ]);
+
+        try {
+            $updateCategory = Category::findOrFail($id);
+            $updateCategory->name_category = $request->kategori;
+            $updateCategory->type_id = $request->tipe;
+            $updateCategory->save();
+
+            alert()->success('Berhasil Mengganti data kategori', 'Sukses')->autoclose(3000);
+            return redirect()->route('category');
+        } catch (Exception $e) {
+            return $e;
+        }catch(\Illuminate\Database\QueryException $e){
+            return $e;
+        }
     }
 
     /**
@@ -80,6 +118,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteCategory = Category::find($id);
+        $deleteCategory->delete();
+        return redirect()->route('category');
     }
 }

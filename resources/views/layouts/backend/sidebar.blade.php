@@ -18,8 +18,14 @@
                 <li class=" {{ request()->routeIs('type') ? 'active' : '' }} ">
                     <a href=" {{ route('type') }} "> <i class="menu-icon ti-list"></i>Tipe</a>
                 </li>
+                <li class=" {{ request()->routeIs('category') ? 'active' : '' }} ">
+                    <a href=" {{ route('category') }} "> <i class=" menu-icon ti-layout-list-thumb"></i>Kategori </a>
+                </li>
                 <li>
                     <a href="# "> <i class="menu-icon ti-user"></i>Pengguna</a>
+                </li>
+                <li>
+                    <a href="# "> <i class="menu-icon ti-android"></i>Pengguna Android</a>
                 </li>
 
             </ul>
