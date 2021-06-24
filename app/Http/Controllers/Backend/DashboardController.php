@@ -11,14 +11,19 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    private $param;
     public function index()
     {
-        $article = Article::all()->count();
-        $authors = Authors::all()->count();
-        $content = Konten::all()->count();
-        $type = Type::all()->count();
+        $this->param['artikel'] = Article::all()->count();
+   
+        $this->param['authors'] = Authors::all()->count();
+    
+        $this->param['content'] = Konten::all()->count();
 
-        return view('dashboard', compact('article','authors','content','type'));
+        $this->param['type'] = Type::all()->count();
+
+        return view('dashboard',$this->param);
+   
     }
 
     // Untuk tampilan landing page
