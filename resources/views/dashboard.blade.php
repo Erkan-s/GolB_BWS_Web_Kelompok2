@@ -16,7 +16,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text">$<span class="count">
+                                    <div class="stat-text"><span class="count">
                                         {{ $article }}
                                     </span></div>
                                     <div class="stat-heading">Artikel</div>
@@ -36,7 +36,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">3435</span></div>
+                                    <div class="stat-text"><span class="count">
+                                        {{ $content }}
+                                        </span></div>
                                     <div class="stat-heading">Konten</div>
                                 </div>
                             </div>
@@ -54,8 +56,10 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">349</span></div>
-                                    <div class="stat-heading">Pengarang</div>
+                                    <div class="stat-text"><span class="count">
+                                        {{ $authors }}
+                                    </span></div>
+                                    <div class="stat-heading">Authors</div>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +76,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">2986</span></div>
+                                    <div class="stat-text"><span class="count">
+                                        {{ $type }}
+                                    </span></div>
                                     <div class="stat-heading">Tipe</div>
                                 </div>
                             </div>
