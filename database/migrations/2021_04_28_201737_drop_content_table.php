@@ -14,6 +14,8 @@ class DropContentTable extends Migration
     public function up()
     {
         Schema::table('content', function(Blueprint $table){
+            // $table->TinyInteger('category_id')->unsigned()->after('authors_id');
+            // $table->foreign('category_id')->references('id')->on('category')->onDelete('restrict')->onUpdate('cascade');
             $table->dropForeign('content_type_id_foreign');
             $table->dropColumn('type_id', 'title');
         });

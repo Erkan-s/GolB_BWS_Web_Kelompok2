@@ -3,8 +3,8 @@
 {{-- content pengarang --}}
 @section('content')
     <x-breadcrumb
-    title="{{$title}}"
-    subtitle="{{$title}}"
+    :title="$title"
+    :subtitle="$title"
     link="{{route('dashboard')}}"
     :linkBaru="$linkBaru"
     :subtitleBaru="$subtitleBaru"/>
@@ -16,7 +16,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header pt-3">
-                            <a class="btn btn-primary tambah-data" href="{{ route('authors.create') }}" role="button">Tambah Data</a>
+                            <a class="btn btn-primary tambah-data" href="{{ route('category.create') }}" role="button">Tambah Data</a>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-bordered">

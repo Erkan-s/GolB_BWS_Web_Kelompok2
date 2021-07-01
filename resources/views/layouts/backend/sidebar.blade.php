@@ -21,8 +21,8 @@
                 <li class=" {{ request()->routeIs('category') ? 'active' : '' }} ">
                     <a href=" {{ route('category') }} "> <i class=" menu-icon ti-layout-list-thumb"></i>Kategori </a>
                 </li>
-                <li>
-                    <a href="# "> <i class="menu-icon ti-user"></i>Pengguna</a>
+                <li class="{{ request()->routeIs('pengguna-admin') }}">
+                    <a href="{{ route('pengguna-admin') }}"> <i class="menu-icon ti-user"></i>Pengguna</a>
                 </li>
                 <li>
                     <a href="# "> <i class="menu-icon ti-android"></i>Pengguna Android</a>

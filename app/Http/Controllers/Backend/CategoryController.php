@@ -33,7 +33,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $this->param['title'] = 'Tambah Data';
+        $this->param['linkBaru'] = 'category';
+        $this->param['subtitleBaru'] = 'Kategory';
+        $this->param['tipe'] = Type::all();
+        return view('backend.category.create',$this->param);
     }
 
     /**
@@ -44,7 +48,36 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $request->validate([
+            'kategori' => 'required|string',
+            'tipe' => 'required'
+        ],[
+            'required' => ':Attribute harus terisi',
+            'string' => ':Attribute tidak boleh angka'
+        ],[
+            'kategori' => 'Data Kategori',
+            'tipe' => 'Data Tipe'
+        ]);
+
+        try {
+            $addCategory = new Category();
+            $addCategory->name_category = $request->kategori;
+            if ($request->tipe != 0) {
+                $addCategory->type_id = $request->tipe;
+            }else{
+                alert()->warning('Kategori tidak boleh kosong', 'Gagal')->autoclose(3000);
+                return redirect()->route('category.create');
+
+            }
+            $addCategory->save();
+            alert()->success('Berhasil Menambah data kategori', 'Sukses')->autoclose(3000);
+            return redirect()->route('category');
+        } catch (Exception $e) {
+            return $e;
+        }catch(\Illuminate\Database\QueryException $e){
+            return $e;
+        }
     }
 
     /**

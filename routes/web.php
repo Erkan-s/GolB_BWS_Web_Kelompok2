@@ -37,19 +37,24 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('authors', Backend\AuthorsController::class, ['names' => [
         'index' => 'authors'
         ]]);
-        // Route Category
-        Route::resource('category', Backend\CategoryController::class, ['names' => [
-            'index' => 'category'
-            ]]);
+    // Route Category
+    Route::resource('category', Backend\CategoryController::class, ['names' => [
+        'index' => 'category'
+        ]]);
     // Route Content
     Route::resource('content', Backend\ContentController::class, ['names' => [
         'index' => 'content'
         ]]);
-        Route::resource('type', Backend\TypeController::class, ['names' => [
-            'index' => 'type'
-            ]]);
+    // Route Type
+    Route::resource('type', Backend\TypeController::class, ['names' => [
+        'index' => 'type'
+        ]]);
+    // Route Admin
+    Route::resource('pengguna-admin','Backend\AdminController',['names'=> [
+        'index' =>'pengguna-admin'
+    ]]);
 
-            });
+    });
 });
 
 // Route tampilan menghitung data
@@ -57,7 +62,6 @@ Route::middleware(['auth'])->group(function () {
 // Route::middleware(['auth'])->group(function () {
 
     Route::get('/','Backend\DashboardController@landingPage')->name('welcome');
-//
 //     Route::prefix('admin')->group(function )
 // });
 require __DIR__.'/auth.php';

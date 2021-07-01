@@ -2,8 +2,8 @@
 
 @section('content')
     <x-breadcrumb
-    title="{{ $title }} "
-    subtitle=" {{ $title }} "
+    :title="$title"
+    :subtitle="$title"
     link="{{route('dashboard')}}"
     :linkBaru="$linkBaru"
     :subtitleBaru="$subtitleBaru"

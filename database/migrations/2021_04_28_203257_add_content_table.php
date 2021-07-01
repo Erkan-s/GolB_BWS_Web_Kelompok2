@@ -14,7 +14,7 @@ class AddContentTable extends Migration
     public function up()
     {
         Schema::table('content', function(Blueprint $table){
-            $table->unsignedTinyInteger('category_id')->after('authors_id');
+            $table->TinyInteger('category_id')->unsigned()->after('authors_id');
             $table->foreign('category_id')->references('id')->on('category')->onDelete('restrict')->onUpdate('cascade');
         });
     }

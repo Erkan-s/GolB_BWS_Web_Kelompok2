@@ -37,6 +37,9 @@
                                             <option value=" {{ $data->type_id == $item->id ? $data->type_id : $item->id }}" {{ $data->type_id == $item ->id ? 'selected' : '' }} > {{ $item->type }} </option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('tipe'))
+                                        <span class="badge badge-danger">{{  $errors->first('tipe') }}</span>
+                                    @endif
                                 </div>
                             </div>
                     </div>

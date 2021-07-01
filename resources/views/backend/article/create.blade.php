@@ -2,11 +2,11 @@
 
 @section('content')
 <x-breadcrumb
-            :title="$title"
-            :subtitle="$title"
-            link="{{route('dashboard')}}"
-            :linkBaru="route($linkBaru)"
-            :subtitleBaru="$subtitleBaru"/>
+    :title="$title"
+    :subtitle="$title"
+    link="{{route('dashboard')}}"
+    :linkBaru="route($linkBaru)"
+    :subtitleBaru="$subtitleBaru"/>
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">

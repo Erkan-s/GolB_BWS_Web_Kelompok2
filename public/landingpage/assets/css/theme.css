@@ -18246,3 +18246,7 @@ label {
 -----------------------------------------------*/
 
 /*# sourceMappingURL=theme.css.map */
+
+.info-text p{
+    font-size: 12px;
+}

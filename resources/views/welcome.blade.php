@@ -60,13 +60,13 @@
         </div>
       </nav>
       <section class="py-0" id="home">
-        <div class="bg-holder" style="background-image:url( {{ asset('landingpage/assets/img/illustrations/hero-bg.png') }} );background-position:bottom;background-size:cover;">
+        <div class="bg-holder " style="background-image:url( {{ asset('landingpage/assets/img/illustrations/hero-bg.png') }} );background-position:bottom;background-size:cover;">
         </div>
         <!--/.bg-holder-->
 
         <div class="container position-relative">
           <div class="row align-items-center py-8">
-            <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid slideUp" style="visibility: hidden"  src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile.png') }}" width="350" alt="" /></div>
+            <div class="col-md-5 col-lg-6 order-md-1 text-center text-md-end"><img class="img-fluid tossing" src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile.png') }}" width="350" alt="" /></div>
             <div class="col-md-7 col-lg-6 text-center text-md-start slideRight"><span class="badge bg-light rounded-pill text-dark align-items-center d-flex flex-row-reverse justify-content-end mx-auto mx-md-0 ps-0 w-75 w-sm-50 w-md-75 w-xl-50 mb-3"># 200 Pengguna User Android<img class="img-fluid float-start me-3" src="{{ asset('landingpage/assets/img/illustrations/jumlah-user.png') }}" alt=""/></span>
               <h1 class="mb-4 display-3 fw-bold lh-sm">Best app for your <br class="d-block d-lg-none d-xl-block" />Healthy</h1>
               <p class="mt-3 mb-4 fs-1">Jaga Kesehatan mu dengan aplikasi Be Healthy. Download For Free <br class="d-none d-lg-block" />Selalu menjaga kebugaran jasmani anda.</p><a class="btn btn-lg btn-primary rounded-pill hover-top" href="#" role="button">Download Gratis</a>
@@ -79,8 +79,8 @@
       <section class="py-5" id="features">
         <div class="container-lg">
           <div class="row align-items-center">
-            <div class="col-md-5 col-lg-6 order-md-0 text-center text-md-start"><img class="img-fluid" id="gambar-mobile" style="visibility: hidden" src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile2.png') }}" width="550" alt="" /></div>
-            <div class="col-md-7 col-lg-6 px-sm-5 px-md-0">
+            <div class="col-md-5 col-lg-6 order-md-0 text-center text-md-start"><img class="img-fluid" id="gambar-mobile" style="visibility: hidden" src="{{ asset('landingpage/assets/img/illustrations/Ilustrasi-Mobile2.png') }}" width="550" alt=""  st/></div>
+            <div class="col-md-7 col-lg-6 px-sm-5 px-md-0" style="visibility: hidden;" id="pilihan-data">
               <h6 class="fw-bold fs-4 display-3 lh-sm">Fitur Aplikasi yang <br/> Luar Biasa</h6>
               <p class="my-4">Increase productivity with a simple to-do app. app for <br class="d-none d-xl-block" />managing your personal budgets.</p>
               <div class="d-flex align-items-center mb-5">
@@ -138,52 +138,38 @@
         <div class="container">
           <div class="container">
             <div class="row align-items-center">
-              <div class="col-md-5 order-md-1 text-center text-md-start"><img class="mb-4" width="800" src="{{ asset('landingpage/assets/img/illustrations/artikel-bacground.png') }}" alt="" /></div>
+              <div class="col-md-5 order-md-1 text-center text-md-start tossing"><img class="mb-4" width="800" src="{{ asset('landingpage/assets/img/illustrations/artikel-bacground.png') }}" alt="" /></div>
               <div class="col-md-6 text-center text-md-start">
                 <h6 class="fw-bold fs-4 display-3 lh-sm">Artikel Terbaru<br />dari Be Healthy</h6>
                 <p class="my-4 pe-xl-5"> Terdapat beberapa artikel terbaru yang dapat dinikmati oleh pengunjung.</p>
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="mb-4">
-                      <div class="py-4"><img class="img-fluid" src="{{ asset('landingpage/assets/img/gallery/artikel-1.png') }}" width="450" alt="" /></div>
-                      <h5 class="fw-bold text-undefined"> </h5>
-                      <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood tests.</p>
-                      <div class="d-flex justify-content-end">
-                        <a class="btn btn-lg btn-primary rounded-pill hover-top mt-4" href="#" role="button">Selengkapnya</a>
-                      </div>
+                    @foreach ($artikel as $item)
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                          <div class="py-4"><img class="img-fluid" src="{{ asset('landingpage/assets/img/gallery/artikel-1.png') }}" width="450" alt="" /></div>
+                          <div class="row">
+                                <div class="col-lg-7 d-flex justify-content-start">
+                                    <h5 class="fw-bold text-undefined"> {{ $item->title }} </h5>
+                                </div>
+                                <div class="col-lg-5 d-flex justify-content-end info-text">
+                                    <div class="">
+                                        <p class="text-muted">
+                                            @if (isset($item->updated_at))
+                                                {{ date('d M Y', strtotime($item->updated_at)) }}
+                                            @else
+                                                {{ date('d M Y', strtotime($item->created_at )) }}
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
+                          </div>
+                          <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood tests.</p>
+                          <div class="d-flex justify-content-end">
+                            <a class="btn btn-lg btn-primary rounded-pill hover-top mt-4" href="#" role="button">Selengkapnya</a>
+                          </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-4">
-                      <div class="py-4"><img class="img-fluid" src="{{ asset('landingpage/assets/img/gallery/artikel-2.png') }}" width="450" alt="" /></div>
-                      <h5 class="fw-bold text-undefined">UX Planning</h5>
-                      <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood tests.</p>
-                      <div class="d-flex justify-content-end">
-                        <a class="btn btn-lg btn-primary rounded-pill hover-top mt-4 " href="#" role="button">Selengkapnya</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-4">
-                      <div class="py-4"><img class="img-fluid" src="{{ asset('landingpage/assets/img/gallery/artikel-3.png') }}" width="450" alt="" /></div>
-                      <h5 class="fw-bold text-undefined">Cloud Storage</h5>
-                      <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood tests.</p>
-                      <div class="d-flex justify-content-end">
-                        <a class="btn btn-lg btn-primary rounded-pill hover-top mt-4 " href="#" role="button">Selengkapnya</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-4">
-                      <div class="py-4"><img class="img-fluid" src="{{ asset('landingpage/assets/img/gallery/artikel-4.png') }}" width="450" alt="" /></div>
-                      <h5 class="fw-bold text-undefined">Customer support</h5>
-                      <p class="mt-2 mb-0">Get your blood tests delivered at home collect a sample from the news your blood tests.</p>
-                      <div class="d-flex justify-content-end">
-                        <a class="btn btn-lg btn-primary rounded-pill hover-top mt-4 " href="#" role="button">Selengkapnya</a>
-                      </div>
-
-                    </div>
-                  </div>
+                    @endforeach
                 </div>
                 <hr>
                 <div class="d-flex justify-content-end">
@@ -322,6 +308,15 @@
 			var topOfWindow = $(window).scrollTop();
 				if (imagePos < topOfWindow+400) {
 					$(this).addClass("slideUp");
+				}
+			});
+
+            $('#pilihan-data').each(function(){
+			var imagePos = $(this).offset().top;
+
+			var topOfWindow = $(window).scrollTop();
+				if (imagePos < topOfWindow+400) {
+					$(this).addClass("bigEntrance");
 				}
 			});
 		});
